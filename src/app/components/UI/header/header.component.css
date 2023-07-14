@@ -8,11 +8,12 @@
   align-items: center;
 }
 
-.toolbar.button {
+.toolbar>.button {
   margin-left: 5px;
+  background-color: rgb(51, 50, 50);
 }
 
-.toolbar.button:first-child {
+.button:first-child {
   margin-left: 0;
 }
 

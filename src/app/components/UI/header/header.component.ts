@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ILink, LABELS, PATHS } from './header.interface';
 
 @Component({
   selector: 'app-header',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
+  linksList: ILink[] = [
+    { path: PATHS.ROOT, label: LABELS.HOME },
+    { path: PATHS.PRODUCTS, label: LABELS.PRODUCTS },
+    { path: PATHS.BASKET, label: LABELS.BASKET },
+  ]
 }
+

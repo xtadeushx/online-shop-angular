@@ -6,7 +6,10 @@
     </div>
     <span class="example-spacer"></span>
 
-    <div class="toolbar no-select">
+    <div class="toolbar no-select" *ngFor="let link of linksList">
+      <button mat-flat-button color="accent" class="button" [routerLink]="link.path">{{link.label | titlecase}}</button>
+      <!-- <button mat-flat-button color="accent" class="button" routerLink="products">Products</button>
+      <button mat-flat-button color="accent" class="button" routerLink="basket">Basket</button> -->
     </div>
   </mat-toolbar-row>
 </mat-toolbar>
