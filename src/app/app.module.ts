@@ -11,7 +11,8 @@ import { ProductDetailsComponent } from './components/product-details/product-de
 import { DialogBoxComponent } from './components/dialog-box/dialog-box.component';
 import { BaseComponent } from './components/base/base.component';
 import { AppRoutingModule } from './app-routing.module';
-
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +28,8 @@ import { AppRoutingModule } from './app-routing.module';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    MatToolbarModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
