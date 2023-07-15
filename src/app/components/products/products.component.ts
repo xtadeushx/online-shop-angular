@@ -5,6 +5,9 @@ import { Component } from '@angular/core';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
+
+
 export class ProductsComponent {
+  Image: string = '../../../assets/images/macbook.jpeg'
 
 }
