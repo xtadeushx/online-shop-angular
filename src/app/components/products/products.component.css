@@ -1,4 +1,4 @@
-.container {
+.products-box {
   padding: 20px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -37,4 +37,16 @@ mat-card.example-card {
 
 .example-spacer {
   flex: 1 1 auto;
+}
+
+.container {
+  margin: 0 auto 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.button.button--edit {
+  background-color: rgb(51, 50, 50);
 }
