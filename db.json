@@ -51,6 +51,19 @@
         "memory": "",
         "display": ""
       }
+    },
+    {
+      "title": "AirBook mini",
+      "price": "400",
+      "year": "2018",
+      "image": "assets/images/macbook.jpeg",
+      "configure": {
+        "chip": "M1",
+        "ssd": "ssd",
+        "memory": "hard",
+        "display": "oled"
+      },
+      "id": 5
     }
   ],
   "basket": [

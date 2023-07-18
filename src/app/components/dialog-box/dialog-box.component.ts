@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { ProductsService } from '../../services/products.service';
 
 @Component({
   selector: 'app-dialog-box',
@@ -22,6 +23,7 @@ export class DialogBoxComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<DialogBoxComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
+    private ProductsService: ProductsService
   ) { }
 
   onNoClick(): void {
@@ -33,6 +35,20 @@ export class DialogBoxComponent implements OnInit {
   }
 
   handelForm() {
-    console.log(this.myForm);
+    this.data = {
+      id: this.myForm.value.id,
+      title: this.myForm.value.title,
+      price: this.myForm.value.price,
+      year: this.myForm.value.year,
+      image: "assets/images/macbook.jpeg",
+      configure: {
+        chip: this.myForm.value.chip,
+        ssd: this.myForm.value.ssd,
+        memory: this.myForm.value.memory,
+        display: this.myForm.value.display,
+      }
+    };
+
+    this.dialogRef.close(this.data);
   }
 }
