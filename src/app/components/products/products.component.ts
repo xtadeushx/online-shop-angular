@@ -54,4 +54,13 @@ export class ProductsComponent implements OnInit {
   ngOnDestroy(): void {
     if (this.productSubscription) this.productSubscription.unsubscribe();
   };
+
+  deleteItem(id: number) {
+    this.productService.deleteProduct(id).subscribe(() => this.products.find((item) => {
+      if (id === item.id) {
+        let idx = this.products.findIndex((data) => data.id === id);
+        this.products.splice(idx, 1);
+      }
+    }));
+  }
 }

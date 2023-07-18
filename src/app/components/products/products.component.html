@@ -18,10 +18,10 @@
       <mat-card-actions>
         <button class="button" mat-flat-button color="primary" type="button">TO BASKET</button>
         <button class="button" mat-flat-button color="primary" [routerLink]="['/product', product.id]">DETAILS</button>
-        <button class="button" mat-flat-button color="primary">EDIT</button>
-        <mat-menu>
-          <button mat-menu-item>Delete</button>
-          <button mat-menu-item>Edit</button>
+        <button class="button" mat-flat-button color="primary" [matMenuTriggerFor]="menu">EDIT</button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item class="menu-item" (click)="deleteItem(product.id)">Delete</button>
+          <button mat-menu-item class="menu-item">Edit</button>
         </mat-menu>
       </mat-card-actions>
     </mat-card>

@@ -14,19 +14,6 @@
       }
     },
     {
-      "id": 2,
-      "title": "MacBook",
-      "price": "123",
-      "year": "2019",
-      "image": "assets/images/macbook.jpeg",
-      "configure": {
-        "chip": "",
-        "ssd": "",
-        "memory": "",
-        "display": ""
-      }
-    },
-    {
       "id": 3,
       "title": "MacBook Air",
       "price": "99",
@@ -38,32 +25,6 @@
         "memory": "",
         "display": ""
       }
-    },
-    {
-      "id": 4,
-      "title": "",
-      "price": "50",
-      "year": "",
-      "image": "assets/images/macbook.jpeg",
-      "configure": {
-        "chip": "",
-        "ssd": "",
-        "memory": "",
-        "display": ""
-      }
-    },
-    {
-      "title": "AirBook mini",
-      "price": "400",
-      "year": "2018",
-      "image": "assets/images/macbook.jpeg",
-      "configure": {
-        "chip": "M1",
-        "ssd": "ssd",
-        "memory": "hard",
-        "display": "oled"
-      },
-      "id": 5
     }
   ],
   "basket": [
