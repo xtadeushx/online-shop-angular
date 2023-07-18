@@ -1,0 +1,16 @@
+.example-form {
+  min-width: 150px;
+  max-width: 90%;
+  width: 100%;
+  padding: 20px;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.button {
+  background-color: rgb(51, 50, 50);
+  color: white;
+  margin-right: 15px;
+}
