@@ -25,6 +25,32 @@
         "memory": "",
         "display": ""
       }
+    },
+    {
+      "title": "aaaa",
+      "price": "1",
+      "year": "1",
+      "image": "assets/images/macbook.jpeg",
+      "configure": {
+        "chip": "aaa",
+        "ssd": "aaa",
+        "memory": "aaa",
+        "display": "aaa"
+      },
+      "id": 4
+    },
+    {
+      "title": "sss",
+      "price": "2",
+      "year": "2",
+      "image": "assets/images/macbook.jpeg",
+      "configure": {
+        "chip": "ddddd",
+        "ssd": "ddddd",
+        "memory": "ddd",
+        "display": "dddd"
+      },
+      "id": 5
     }
   ],
   "basket": [

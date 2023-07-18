@@ -10,21 +10,23 @@ import { ProductsService } from '../../services/products.service';
 })
 
 export class DialogBoxComponent implements OnInit {
-  myForm: FormGroup = new FormGroup({
-    title: new FormControl(''),
-    price: new FormControl(''),
-    year: new FormControl(''),
-    chip: new FormControl(''),
-    ssd: new FormControl(''),
-    memory: new FormControl(''),
-    display: new FormControl(''),
-  });
-
   constructor(
     public dialogRef: MatDialogRef<DialogBoxComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private ProductsService: ProductsService
   ) { }
+
+  myForm: FormGroup = new FormGroup({
+    id: new FormControl(this.data.id ?? null),
+    title: new FormControl(this.data.title ?? null),
+    price: new FormControl(this.data.price ?? null),
+    year: new FormControl(this.data.year ?? null),
+    chip: new FormControl(this.data.chip ?? null),
+    ssd: new FormControl(this.data.ssd ?? null),
+    memory: new FormControl(this.data.memory ?? null),
+    display: new FormControl(this.data.display ?? null),
+  });
+
+  isNew: boolean = false;
 
   onNoClick(): void {
     this.dialogRef.close(null);

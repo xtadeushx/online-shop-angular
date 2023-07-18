@@ -49,6 +49,7 @@ export class ProductsComponent implements OnInit {
   }
 
   updateData(data: IProduct) {
+    this.productService.updateProduct(data).subscribe(data => this.products.push(data))
   }
 
   ngOnDestroy(): void {
