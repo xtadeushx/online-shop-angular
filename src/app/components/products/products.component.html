@@ -16,7 +16,8 @@
         <p>Year: <span style="font-weight: bold;">{{product.year }}</span></p>
       </mat-card-content>
       <mat-card-actions>
-        <button class="button" mat-flat-button color="primary" type="button">TO BASKET</button>
+        <button class="button" mat-flat-button color="primary" type="button" (click)="addToBasket(product)">TO
+          BASKET</button>
         <button class="button" mat-flat-button color="primary" [routerLink]="['/product', product.id]">DETAILS</button>
         <button class="button" mat-flat-button color="primary" [matMenuTriggerFor]="menu">EDIT</button>
         <mat-menu #menu="matMenu">

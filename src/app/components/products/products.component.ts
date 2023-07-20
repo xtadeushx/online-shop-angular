@@ -14,19 +14,26 @@ import { DialogConfig } from '@angular/cdk/dialog';
 
 
 export class ProductsComponent implements OnInit {
+  constructor(
+    private productService: ProductsService,
+    public dialog: MatDialog) { }
+
   Image: string = '../../../assets/images/macbook.jpeg';
   products: IProduct[] = [];
   productSubscription: Subscription
   canEdit: boolean = false;
 
-  constructor(
-    private productService: ProductsService,
-    public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.canEdit = true;
     this.productSubscription = this.productService.getProducts().subscribe(data => this.products = data);
   };
+
+  addToBasket(product: IProduct): void {
+    this.productService
+      .postProductToBasket(product)
+      .subscribe(data => console.log(data));
+  }
 
   openDialog(product?: IProduct): void {
     let dialogConfig = new MatDialogConfig();
@@ -45,7 +52,9 @@ export class ProductsComponent implements OnInit {
   }
 
   postData(data: IProduct) {
-    this.productService.postProduct(data).subscribe(data => this.products.push(data))
+    this.productService
+      .postProduct(data)
+      .subscribe(data => this.products.push(data))
   };
 
   updateData(data: IProduct) {

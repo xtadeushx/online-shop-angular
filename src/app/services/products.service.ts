@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class ProductsService {
   url: string = 'http://localhost:3000/products'
+  urlBasket: string = 'http://localhost:3000/basket'
 
   constructor(private http: HttpClient) { }
 
@@ -30,5 +31,9 @@ export class ProductsService {
 
   updateProduct(product: IProduct) {
     return this.http.put<IProduct>(`${this.url}/${product.id}`, product)
+  }
+
+  postProductToBasket(product: IProduct) {
+    return this.http.post<IProduct>(`${this.urlBasket}`, product)
   }
 }

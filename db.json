@@ -17,13 +17,13 @@
       "id": 3,
       "title": "MacBook Air",
       "price": "99",
-      "year": "2018",
+      "year": "2000",
       "image": "assets/images/macbook.jpeg",
       "configure": {
-        "chip": "",
-        "ssd": "",
-        "memory": "",
-        "display": ""
+        "chip": null,
+        "ssd": null,
+        "memory": null,
+        "display": null
       }
     },
     {
@@ -40,17 +40,17 @@
       "id": 4
     },
     {
+      "id": 5,
       "title": "sss",
       "price": "2",
-      "year": "2",
+      "year": "200",
       "image": "assets/images/macbook.jpeg",
       "configure": {
-        "chip": "ddddd",
-        "ssd": "ddddd",
-        "memory": "ddd",
-        "display": "dddd"
-      },
-      "id": 5
+        "chip": null,
+        "ssd": null,
+        "memory": null,
+        "display": null
+      }
     }
   ],
   "basket": [
