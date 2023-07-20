@@ -36,4 +36,8 @@ export class ProductsService {
   postProductToBasket(product: IProduct) {
     return this.http.post<IProduct>(`${this.urlBasket}`, product)
   }
+
+  getProductsFromBasket(): Observable<IProduct[]> {
+    return this.http.get<IProduct[]>(this.urlBasket)
+  };
 }

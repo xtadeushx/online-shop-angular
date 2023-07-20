@@ -19,21 +19,41 @@ export class ProductsComponent implements OnInit {
     public dialog: MatDialog) { }
 
   Image: string = '../../../assets/images/macbook.jpeg';
+
   products: IProduct[] = [];
   productSubscription: Subscription
-  canEdit: boolean = false;
 
+  basket: IProduct[] = [];
+  basketSubscription: Subscription
+
+  canEdit: boolean = false;
+  canView: boolean = false;
 
   ngOnInit(): void {
     this.canEdit = true;
-    this.productSubscription = this.productService.getProducts().subscribe(data => this.products = data);
-  };
 
+    this.productSubscription = this.productService
+      .getProducts()
+      .subscribe(data => this.products = data);
+
+    this.basketSubscription = this.productService
+      .getProductsFromBasket()
+      .subscribe(data => this.basket = data);
+  };
+  // =================Basket =============================
   addToBasket(product: IProduct): void {
+    product.quantity = 1
     this.productService
       .postProductToBasket(product)
-      .subscribe(data => console.log(data));
-  }
+      .subscribe(data => this.basket.push(data));
+  };
+
+  postToBasket() {
+
+  };
+
+  updateToBasket() { };
+
 
   openDialog(product?: IProduct): void {
     let dialogConfig = new MatDialogConfig();
@@ -49,7 +69,7 @@ export class ProductsComponent implements OnInit {
         else { this.postData(data); }
       }
     });
-  }
+  };
 
   postData(data: IProduct) {
     this.productService
@@ -81,5 +101,7 @@ export class ProductsComponent implements OnInit {
 
   ngOnDestroy(): void {
     if (this.productSubscription) this.productSubscription.unsubscribe();
+
+    if (this.basketSubscription) this.basketSubscription.unsubscribe();
   };
 }

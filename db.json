@@ -67,6 +67,19 @@
         "display": ""
       },
       "quantity": 6
+    },
+    {
+      "id": 3,
+      "title": "MacBook Air",
+      "price": "99",
+      "year": "2000",
+      "image": "assets/images/macbook.jpeg",
+      "configure": {
+        "chip": null,
+        "ssd": null,
+        "memory": null,
+        "display": null
+      }
     }
   ]
 }
