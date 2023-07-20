@@ -46,14 +46,19 @@ export class ProductsComponent implements OnInit {
 
   postData(data: IProduct) {
     this.productService.postProduct(data).subscribe(data => this.products.push(data))
-  }
+  };
 
   updateData(data: IProduct) {
-    this.productService.updateProduct(data).subscribe(data => this.products.push(data))
-  }
-
-  ngOnDestroy(): void {
-    if (this.productSubscription) this.productSubscription.unsubscribe();
+    this.productService.updateProduct(data).subscribe(data => {
+      this.products = this.products.map(pr => {
+        if (pr.id === data.id) {
+          return data;
+        } else {
+          return pr;
+        }
+      })
+    }
+    )
   };
 
   deleteItem(id: number) {
@@ -63,5 +68,9 @@ export class ProductsComponent implements OnInit {
         this.products.splice(idx, 1);
       }
     }));
-  }
+  };
+
+  ngOnDestroy(): void {
+    if (this.productSubscription) this.productSubscription.unsubscribe();
+  };
 }
