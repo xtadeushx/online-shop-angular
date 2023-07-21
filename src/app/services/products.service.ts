@@ -7,42 +7,47 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProductsService {
-  url: string = 'http://localhost:3000/products'
-  urlBasket: string = 'http://localhost:3000/basket'
-
   constructor(private http: HttpClient) { }
 
+  url: string = 'http://localhost:3000/products';
+  urlBasket: string = 'http://localhost:3000/basket';
+
+
   getProducts(): Observable<IProduct[]> {
-    return this.http.get<IProduct[]>(this.url)
+    return this.http.get<IProduct[]>(this.url);
   };
 
 
   getProduct(id: number): Observable<IProduct> {
-    return this.http.get<IProduct>(`${this.url}/${id}`)
+    return this.http.get<IProduct>(`${this.url}/${id}`);
   };
 
   postProduct(product: IProduct): Observable<IProduct> {
-    return this.http.post<IProduct>(`${this.url}`, product)
-  }
+    return this.http.post<IProduct>(`${this.url}`, product);
+  };
 
   deleteProduct(id: number): Observable<IProduct> {
-    return this.http.delete<IProduct>(`${this.url}/${id}`)
-  }
+    return this.http.delete<IProduct>(`${this.url}/${id}`);
+  };
 
   updateProduct(product: IProduct) {
-    return this.http.put<IProduct>(`${this.url}/${product.id}`, product)
-  }
+    return this.http.put<IProduct>(`${this.url}/${product.id}`, product);
+  };
 
   postProductToBasket(product: IProduct) {
     return this.http.post<IProduct>(`${this.urlBasket}`, product)
-  }
+  };
 
   getProductsFromBasket(): Observable<IProduct[]> {
     return this.http.get<IProduct[]>(this.urlBasket)
   };
 
   updateProductToBasket(product: IProduct) {
-    return this.http.put<IProduct>(`${this.urlBasket}/${product.id}`, product)
+    return this.http.put<IProduct>(`${this.urlBasket}/${product.id}`, product);
+  };
+
+  deleteItemFromBasket(id: number) {
+    return this.http.delete<IProduct>(`${this.urlBasket}/${id}`);
   }
 
 }

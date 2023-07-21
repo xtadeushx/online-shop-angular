@@ -38,7 +38,7 @@ export class ProductsComponent implements OnInit {
     this.basketSubscription = this.productService
       .getProductsFromBasket()
       .subscribe((data) => (this.basket = data));
-  }
+  };
   // =================Basket =============================
   addToBasket(product: IProduct): void {
     product.quantity = 1;
@@ -54,13 +54,13 @@ export class ProductsComponent implements OnInit {
     } else {
       this.postToBasket(product);
     }
-  }
+  };
 
   postToBasket(product: IProduct) {
     this.productService
       .postProductToBasket(product)
       .subscribe((data) => this.basket.push(data));
-  }
+  };
 
   updateToBasket(product: IProduct) {
     if (product.quantity) {
@@ -70,7 +70,7 @@ export class ProductsComponent implements OnInit {
       .updateProductToBasket(product)
       .subscribe((data) => {
       });
-  }
+  };
 
   openDialog(product?: IProduct): void {
     let dialogConfig = new MatDialogConfig();
@@ -89,13 +89,13 @@ export class ProductsComponent implements OnInit {
         }
       }
     });
-  }
+  };
 
   postData(data: IProduct) {
     this.productService
       .postProduct(data)
       .subscribe((data) => this.products.push(data));
-  }
+  };
 
   updateData(data: IProduct) {
     this.productService.updateProduct(data).subscribe((data) => {
@@ -107,7 +107,7 @@ export class ProductsComponent implements OnInit {
         }
       });
     });
-  }
+  };
 
   deleteItem(id: number) {
     this.productService.deleteProduct(id).subscribe(() =>
@@ -118,11 +118,11 @@ export class ProductsComponent implements OnInit {
         }
       })
     );
-  }
+  };
 
   ngOnDestroy(): void {
     if (this.productSubscription) this.productSubscription.unsubscribe();
 
     if (this.basketSubscription) this.basketSubscription.unsubscribe();
-  }
+  };
 }
