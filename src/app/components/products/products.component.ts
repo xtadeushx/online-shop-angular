@@ -9,22 +9,21 @@ import { DialogConfig } from '@angular/cdk/dialog';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css']
+  styleUrls: ['./products.component.css'],
 })
-
-
 export class ProductsComponent implements OnInit {
   constructor(
     private productService: ProductsService,
-    public dialog: MatDialog) { }
+    public dialog: MatDialog
+  ) { }
 
   Image: string = '../../../assets/images/macbook.jpeg';
 
   products: IProduct[] = [];
-  productSubscription: Subscription
+  productSubscription: Subscription;
 
   basket: IProduct[] = [];
-  basketSubscription: Subscription
+  basketSubscription: Subscription;
 
   canEdit: boolean = false;
   canView: boolean = false;
@@ -34,26 +33,44 @@ export class ProductsComponent implements OnInit {
 
     this.productSubscription = this.productService
       .getProducts()
-      .subscribe(data => this.products = data);
+      .subscribe((data) => (this.products = data));
 
     this.basketSubscription = this.productService
       .getProductsFromBasket()
-      .subscribe(data => this.basket = data);
-  };
+      .subscribe((data) => (this.basket = data));
+  }
   // =================Basket =============================
   addToBasket(product: IProduct): void {
-    product.quantity = 1
+    product.quantity = 1;
+    let findItem;
+
+    if (this.basket.length > 0) {
+      findItem = this.basket.find(item => item.id === product.id);
+      if (findItem) {
+        this.updateToBasket(findItem);
+      } else {
+        this.postToBasket(product);
+      }
+    } else {
+      this.postToBasket(product);
+    }
+  }
+
+  postToBasket(product: IProduct) {
     this.productService
       .postProductToBasket(product)
-      .subscribe(data => this.basket.push(data));
-  };
+      .subscribe((data) => this.basket.push(data));
+  }
 
-  postToBasket() {
-
-  };
-
-  updateToBasket() { };
-
+  updateToBasket(product: IProduct) {
+    if (product.quantity) {
+      product.quantity++;
+    }
+    this.productService
+      .updateProductToBasket(product)
+      .subscribe((data) => {
+      });
+  }
 
   openDialog(product?: IProduct): void {
     let dialogConfig = new MatDialogConfig();
@@ -65,43 +82,47 @@ export class ProductsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((data) => {
       if (data) {
-        if (data && data.id) { this.updateData(data); }
-        else { this.postData(data); }
+        if (data && data.id) {
+          this.updateData(data);
+        } else {
+          this.postData(data);
+        }
       }
     });
-  };
+  }
 
   postData(data: IProduct) {
     this.productService
       .postProduct(data)
-      .subscribe(data => this.products.push(data))
-  };
+      .subscribe((data) => this.products.push(data));
+  }
 
   updateData(data: IProduct) {
-    this.productService.updateProduct(data).subscribe(data => {
-      this.products = this.products.map(pr => {
+    this.productService.updateProduct(data).subscribe((data) => {
+      this.products = this.products.map((pr) => {
         if (pr.id === data.id) {
           return data;
         } else {
           return pr;
         }
-      })
-    }
-    )
-  };
+      });
+    });
+  }
 
   deleteItem(id: number) {
-    this.productService.deleteProduct(id).subscribe(() => this.products.find((item) => {
-      if (id === item.id) {
-        let idx = this.products.findIndex((data) => data.id === id);
-        this.products.splice(idx, 1);
-      }
-    }));
-  };
+    this.productService.deleteProduct(id).subscribe(() =>
+      this.products.find((item) => {
+        if (id === item.id) {
+          let idx = this.products.findIndex((data) => data.id === id);
+          this.products.splice(idx, 1);
+        }
+      })
+    );
+  }
 
   ngOnDestroy(): void {
     if (this.productSubscription) this.productSubscription.unsubscribe();
 
     if (this.basketSubscription) this.basketSubscription.unsubscribe();
-  };
+  }
 }

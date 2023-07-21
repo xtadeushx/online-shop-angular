@@ -55,20 +55,6 @@
   ],
   "basket": [
     {
-      "id": 1,
-      "title": "QE",
-      "price": "123",
-      "year": "1231231231",
-      "image": "assets/images/macbook.jpeg",
-      "configure": {
-        "chip": "",
-        "ssd": "",
-        "memory": "",
-        "display": ""
-      },
-      "quantity": 6
-    },
-    {
       "id": 3,
       "title": "MacBook Air",
       "price": "99",
@@ -79,7 +65,22 @@
         "ssd": null,
         "memory": null,
         "display": null
-      }
+      },
+      "quantity": 1
+    },
+    {
+      "id": 1,
+      "title": "QE",
+      "price": "122",
+      "year": "2021",
+      "image": "assets/images/macbook.jpeg",
+      "configure": {
+        "chip": "",
+        "ssd": "",
+        "memory": "",
+        "display": ""
+      },
+      "quantity": 8
     }
   ]
 }

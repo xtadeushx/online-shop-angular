@@ -40,4 +40,9 @@ export class ProductsService {
   getProductsFromBasket(): Observable<IProduct[]> {
     return this.http.get<IProduct[]>(this.urlBasket)
   };
+
+  updateProductToBasket(product: IProduct) {
+    return this.http.put<IProduct>(`${this.urlBasket}/${product.id}`, product)
+  }
+
 }
